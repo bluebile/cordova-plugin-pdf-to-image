@@ -55,8 +55,8 @@ static NSString* const kBase64 = @"base64";
     NSNumber* shouldUseJpeg = (NSNumber*)[command argumentAtIndex:2];
 
     [self.commandDelegate runInBackground:^{
-        NSArray* pageNumbers = (NSArray*)[command argumentAtIndex:3];
-        NSURL* sourceURL = [NSURL URLWithString:source];
+        //NSArray* pageNumbers = (NSArray*)[command argumentAtIndex:3];
+        NSArray* pageNumbers = [NSArray arrayWithObjects:[command argumentAtIndex:3], nil];
         NSURL* targetURL = [NSURL URLWithString:target];	
         
         // Total Page
