@@ -56,7 +56,10 @@ static NSString* const kBase64 = @"base64";
 
     [self.commandDelegate runInBackground:^{
         //NSArray* pageNumbers = (NSArray*)[command argumentAtIndex:3];
-        NSArray* pageNumbers = [NSArray arrayWithObjects:[command argumentAtIndex:3], nil];
+        NSMutableArray* pageNumbers = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [[command argumentAtIndex:3] intValue]; i++) {
+            [pageNumbers addObject:@(i + 1)];
+        }
         NSURL* sourceURL = [NSURL URLWithString:source];
         NSURL* targetURL = [NSURL URLWithString:target];		
         
