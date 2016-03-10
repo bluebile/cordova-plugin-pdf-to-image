@@ -52,7 +52,7 @@ static NSString* const kBase64 = @"base64";
 {
     NSString* source = (NSString*)[command argumentAtIndex:0];
     NSString* target = (NSString*)[command argumentAtIndex:1];
-    NSNumber* shouldUseJpeg = (NSNumber*)[command argumentAtIndex:2];
+    BOOL shouldUseJpeg = [[command argumentAtIndex:2] boolValue];
 
     [self.commandDelegate runInBackground:^{
         //NSArray* pageNumbers = (NSArray*)[command argumentAtIndex:3];
@@ -63,7 +63,7 @@ static NSString* const kBase64 = @"base64";
         // Total Page
         int pageCount = (int)[PDFView pageCountForURL:sourceURL];
 
-        if (!pageNumbers.count) {
+        if (pageNumbers.count) {
             NSMutableArray* array = @[].mutableCopy;
 
             for (int i = 0; i < pageCount; i++) {
